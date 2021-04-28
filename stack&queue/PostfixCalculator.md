@@ -1,25 +1,6 @@
-﻿**2021자료구조**
+# 1. 후위연산 활용 계산기
 
-**과제2 – 계산기, 미로탐색, 큐 운영**
-
-
-
-![](Aspose.Words.528f683e-cd7d-4f59-998b-9843abeea2d5.001.jpeg)
-
-
-
-
-**중앙대학교**
-
-**자료구조 05분반**
-
-**20173745 정도현**
-
-**20176963 홍지중**
-
-**1. 후위연산 활용 계산기**
-
-\1. 후위식 변환
+## 1. 후위식 변환
 
 - int operator(char op) : 연산자에 우선순위를 주는 함수
 - ‘^’ 의 우선순위 7, ‘%\*’ 의 우선순위 5, ‘+-’ 의 우선순위 3, ‘(‘ 의 우선순위 1을 주고, 아무것도 없을 경우는 -1를 반환하게 만들었다.
@@ -38,11 +19,11 @@
 - 식이 다 끝날을 경우, stack이 비지 않았다면, result에 pop으로 붙여준다.
 - 그리고 result값은 input에 strcpy로 복사한 뒤, result는 free 해준다.
 - 출력값
-  ![텍스트이(가) 표시된 사진
+-  ![image](https://user-images.githubusercontent.com/63644587/116431865-20d5d980-a883-11eb-8cfc-4fc3e5dfc553.png)
 
-자동 생성된 설명](https://lh6.googleusercontent.com/3saLv29peqBPW\_YUXzzUVf2bOBVCIKLMO0A3cPaBQ9kfuaXjvIgH9o-Gmcqtao5oXB6vDhAM5dh3BcOj1f9fX9l7BLqVL614WigU0SBcGnPtwDkP8dZpckBzetTQhaHY0\_UX3\_bb)
 
-\2. 후위식 계산
+
+## 2. 후위식 계산
 
 - 후위식 계산 전에, strtok로 후위식 변환으로 변경된 문자열을 잘라서 char\* result[100]이라는 배열에 저장하였다.
 - 위의 경우는 [“2”, “3”, “4”, “\*”, “2”, “^”, “+, “12”, “-”]로 저장된다.
@@ -54,15 +35,14 @@
   - 두개를 pop 시킨다음 그에 대한 연산 결과를 다시 push 한다. 그리고 순차탐색을 하면서, 연산자가 나올 경우, 동일한 매커니즘으로 진행한다.
   - 순차탐색이 완료될 경우, 모든 연산이 끝났음을 의미하므로, stack에는 하나의 숫자만 있을 것이고, 이를 pop 시키면 결과가 나온다.
 - 출력값
-
-`	`![텍스트이(가) 표시된 사진
-
-자동 생성된 설명](https://lh4.googleusercontent.com/3VOtsF0lwas7kAik4AMyQ90QHnR1x9f3HUHfW7u\_DA98a0Boi7nc6fLL2cC\_odXM3NN10XU-DbYOLpCJasaYOTwCHGByxGL9\_cl8SVbVerrQ6UPpBTt8OKqsD94wS4un9VSRCEY-)
+- ![image](https://user-images.githubusercontent.com/63644587/116431900-292e1480-a883-11eb-973a-f703fb405bb0.png)
 
 
 
 
-\3. 오류 판별
+
+
+## 3. 오류 판별
 
 - 오류 판별의 경우는 main에서 후위연산과 후위연산 계산 함수에 들어가기전에 먼저 진행한다.
 - 오류 종류는 1. 처음에 연산자가 나올경우, 2. 연산자가 연속으로 나올 경우, 3. 괄호가 안 닫혀있는 경우, 4. 닫는 괄호만  있는 경우
@@ -77,16 +57,12 @@
 - 순차탐색이 끝난 휘에, 스택이 비지 않았다면, ‘(’ 만 남았다는 의미이다. (오류 종류 3번) 순차탐색 인덱스 - 1의 위치를 반환한다.
 - 오류가 없다면 MAX\_NUM +1을 반환하게 했다.
 
-\4. Main함수
+
+## 4. Main함수
 
 - 오류가 있을 경우, location이라는 변수로 오류 위치를 받고, for문으로 location 전까지 “ “를 찍고, 마지막에 ("^이위치에 오류존재\n")를 출력했다.
+-  ![image](https://user-images.githubusercontent.com/63644587/116432002-406d0200-a883-11eb-83c2-5ae6d1a90311.png)
+-  ![image](https://user-images.githubusercontent.com/63644587/116432021-44008900-a883-11eb-8b98-3cf574d6239f.png)
+-  ![image](https://user-images.githubusercontent.com/63644587/116432042-46fb7980-a883-11eb-8198-238725d15a68.png)
+-  ![image](https://user-images.githubusercontent.com/63644587/116432054-4a8f0080-a883-11eb-9c53-b32913175975.png)
 
-![텍스트이(가) 표시된 사진
-
-자동 생성된 설명](https://lh5.googleusercontent.com/6X3jb6hUoGHsXdDT6npsUMTPQ7YjkvPVkyyYPCH70ZTC278THJ5ngasVpNyMpM0jjjEUcjRM1HPNTII3MLX37kclF\_DVuGJkPodMjZRxM734qugPe7ZzElPEu40o3zbLTtIIO78K)   ![텍스트이(가) 표시된 사진
-
-자동 생성된 설명](https://lh5.googleusercontent.com/VEBDWasY\_yiRUAJCk1yV3ZznwkbNMMrWHQpeu5rHpBTq6Rdtl7aafbIaTr\_I5pMFAGzQGm6-12wtI2RWF46Q78Gg7c1ayd2s7X8H-hlZdACvgnGOIUNtds2xut0kpeeufoMmp2Qc)
-
-![텍스트이(가) 표시된 사진
-
-자동 생성된 설명](https://lh5.googleusercontent.com/02r7w6uxB0QGjiIgKUUh3Fa5jHJNbxhMavQXTxIlay2OfuguDeOju12iHIQupDdoK1-AoS9bEEcI0padcYkZczCdaZkmiNRpkxGJHtHwjQZYgfjkuEijMGNvVmUaBPVFJCUAMDHX)            ![](https://lh6.googleusercontent.com/7\_lnQOHCHzyCpYOd1T55CNEZqMdgzmfms02oFX8RXiT8ij08wRmdrjAMNs9t7I7Dpahzs2-RA\_nQf5Y0UX1jSQ3YDdQlroel\_IERX4mx-OGY7Foole3UJKz16Z3szmIFb9Jb2z5s)
