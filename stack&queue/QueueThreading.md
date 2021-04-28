@@ -31,9 +31,6 @@
 
 -  ![image](https://user-images.githubusercontent.com/63644587/116431528-d3f20300-a882-11eb-818d-fdd654316cd2.png)
 
-
-자동 생성된 설명](https://lh3.googleusercontent.com/21cwttj0T0Qcj2qO8NW3c1i34XEx7osMm0ZdYtLqu3C-t7kyHV2SO0ipxtm1QlZNEJQrAMK4AMh4S4ryrilLj0l15FHFbQ3q3YetWcrN9MJjbUuy6GzL9AWo7WJc4vaBX-cCXsQa)
-
 - printf("DEQUEUE() = %c, F=%d R=%d\n", queue.queueArray[(queue.front+1)%21], (queue.front+1)%21, queue.rear);
 - dequeue를 할때는 front 다음값이 dequeue되기 때문에, 출력할 때는 queue.front +1를 해주었다. 또한 A-Z가 순환하면서 queueArray에 저장되기 때문에, 인덱스를 아스키코드르 바꾸지 않고, queueArray의 값을 바로 char로 뽑았다.
 - dequeue한 값은 result 라는 배열에 저장하면서, 마지막 다음값에 ‘\0’을 넣어서 string으로 출력했다. 그리고 result[0]에 ‘\0’을 넣고, result의 index = 0으로 초기화를 진행했다.
