@@ -232,7 +232,7 @@
 5) 실행 결과
 
 - 강의자료에 나온 수식 값을 기반으로 테스트 한 결과
-![image](https://user-images.githubusercontent.com/63644587/116427735-41039980-a87f-11eb-82d3-a13b876b4667.png)
+- ![image](https://user-images.githubusercontent.com/63644587/116427735-41039980-a87f-11eb-82d3-a13b876b4667.png)
 
 - 이 외에 다양한 행렬을 테스트 한 결과 문제 없이 출력되었음
 
