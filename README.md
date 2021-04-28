@@ -14,7 +14,7 @@
 
 ### [최단거리 미로계산](./stack&queue/FastestMatrix.md)
 
-### [큐 운영하기](./stack&queue/Queue_Threading.md)
+### [큐 운영하기](./stack&queue/QueueThreading.md)
 
 
 ## 정렬
