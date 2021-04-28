@@ -12,7 +12,7 @@
 
 ### [후위수식 계산기](./stack&queue/PostfixCalculator.md)
 
-### [최단거리 미로계산](./stack&queue/FastestMaze.md)
+### \*[최단거리 미로계산](./stack&queue/FastestMaze.md)\*
 
 ### [큐 운영하기](./stack&queue/QueueThreading.md)
 
