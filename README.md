@@ -1,4 +1,4 @@
-# data_sturcture
+# 자료구조 보고서
 
 ## 배열
 ### [다항식의 연산](./array/Polynomial.md)
