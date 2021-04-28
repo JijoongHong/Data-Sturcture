@@ -1,5 +1,8 @@
 # 2. 미로 탐색
 
+ ![image](https://user-images.githubusercontent.com/63644587/116434226-351ad600-a885-11eb-9b7d-88325ffc05ae.png)
+
+
 ## 1. 미로의 저장
 
 - 미로는 다음과 같은 요소를 가진 구조체로 정의된다.
