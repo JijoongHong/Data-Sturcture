@@ -1,4 +1,4 @@
-# 자료구조 보고서
+# Data Structure
 
 ## 배열
 
