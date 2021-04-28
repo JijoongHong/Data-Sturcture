@@ -1,6 +1,6 @@
 # I. 다항식의 곱셈과 덧셈
 
-## 1. 방식 1(모든 차수의 계수를 저장)을 활용한 다항식의 덧셈과 곱셈**
+## 1. 방식 1(모든 차수의 계수를 저장)을 활용한 다항식의 덧셈과 곱셈
 
 ### 1) 수식의 입력 : main( )
 
@@ -54,9 +54,10 @@
 
 - 강의자료에 나온 수식 값을 기반으로 테스트 한 결과
 - 이 외에 다양한 경우의 수(음수계수 등)을 테스트 한 결과 문제 없이 출력되었음
-- \<img width="487" alt="Aspose Words 5d0761ac-de24-41a2-a695-086c205cbd2e 004" src="https://user-images.githubusercontent.com/63644587/116426507-1ebd4c00-a87e-11eb-9502-62eb2c477c4f.png">
-!<img width="487" alt="Aspose Words 5d0761ac-de24-41a2-a695-086c205cbd2e 003" src="https://user-images.githubusercontent.com/63644587/116426501-1d8c1f00-a87e-11eb-98b2-7fd247be0ef6.png">
-[Uploading Aspose.Words.5d0761ac-de24-41a2-a695-086c205cbd2e.002.png…]()
+- ![image](https://user-images.githubusercontent.com/63644587/116427623-24fff800-a87f-11eb-8d09-406f668a0993.png)
+- ![image](https://user-images.githubusercontent.com/63644587/116427638-27fae880-a87f-11eb-8c69-292e2ec16325.png)
+- ![image](https://user-images.githubusercontent.com/63644587/116427653-2b8e6f80-a87f-11eb-98b9-e286125058c3.png)
+
 
 
 ## 2. 방식 1(0이 아닌 계수의 차수만 저장)을 활용한 다항식의 덧셈과 곱셈
@@ -168,9 +169,7 @@
 ### 5) 실행 결과
 
 - 강의자료에 나온 수식 값을 기반으로 테스트 한 결과
-- ![텍스트이(가) 표시된 사진
-
-자동 생성된 설명](Aspose.Words.5d0761ac-de24-41a2-a695-086c205cbd2e.008.png)
+- ![image](https://user-images.githubusercontent.com/63644587/116427695-36e19b00-a87f-11eb-90c0-63d74152b518.png)
 - 이 외에 다양한 행렬을 테스트 한 결과 문제 없이 출력되었음
 
 **2. 방식 2(희소행렬)을 활용한 행렬의 덧셈과 곱셈**
@@ -233,9 +232,8 @@
 5) 실행 결과
 
 - 강의자료에 나온 수식 값을 기반으로 테스트 한 결과
-<img width="353" alt="Aspose Words 5d0761ac-de24-41a2-a695-086c205cbd2e 008" src="https://user-images.githubusercontent.com/63644587/116427043-a1460b80-a87e-11eb-82ac-ecb18740b962.png">
+![image](https://user-images.githubusercontent.com/63644587/116427735-41039980-a87f-11eb-82d3-a13b876b4667.png)
 
-![Aspose Words 5d0761ac-de24-41a2-a695-086c205cbd2e 009](https://user-images.githubusercontent.com/63644587/116427055-a440fc00-a87e-11eb-8545-337dcd8ced73.png)
 - 이 외에 다양한 행렬을 테스트 한 결과 문제 없이 출력되었음
 
 
