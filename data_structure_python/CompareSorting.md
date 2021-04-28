@@ -168,7 +168,9 @@
   - 이전과 동일하게 For문을 통해 0에서 size까지 increment를 1000으로 설정하여 해당 인덱스에 해당하는 값을 출력한다. 
 
 - 실행결과
+
   ![image](https://user-images.githubusercontent.com/63644587/116436056-fa19a200-a886-11eb-9e57-fef6d4bdbbc6.png) ![image](https://user-images.githubusercontent.com/63644587/116436076-ff76ec80-a886-11eb-9018-97a33f6b924b.png)
+
 
 
 ### 4) 퀵정렬 (비재귀)
@@ -190,6 +192,7 @@
     - 위와 같은 과정을 스택이 빌 때 까지(더 분할이 불가능한 경우) 반복한다.
 
 - 실행결과
+
   ![image](https://user-images.githubusercontent.com/63644587/116436142-1289bc80-a887-11eb-8f78-f9861a6e5814.png) ![image](https://user-images.githubusercontent.com/63644587/116436156-1584ad00-a887-11eb-8578-b99937b2e774.png)
 
 
@@ -215,12 +218,8 @@
     - 부모 노드의 인덱스인 root\_idx를 기반으로 첫번째 자식 노드를 설정한다. 
     - 첫번째 자식 노드의 인덱스는 부모 인덱스 \* 2 + 1이다. 아래 예시와 같이 index 1의 첫번째 자식 노드는 1 \* 2 + 1 = 3이 된다.
 
-      |||<p>(0)</p><p>10</p>||
-      | :-: | :-: | :-: | :-: |
-      ||/||＼|
-      ||<p>(1)</p><p>9</p>||<p>` `(2)</p><p>`  `4</p>|
-      |/|<h3>` `＼</h3>|||
-      |<p>(3)</p><p>` `8</p>|<p>` `(4)</p><p>9</p>|||
+    <img width="263" alt="스크린샷 2021-04-29 오전 1 09 59" src="https://user-images.githubusercontent.com/63644587/116436710-9f347a80-a887-11eb-82bc-053bb9cabb9f.png">
+
 
 
       |Index|0|1|2|3|4|
@@ -268,6 +267,7 @@
 
 
 
+
 # 3. 결론
 
 
@@ -306,8 +306,4 @@
 
 
 
-
-
-
-` `PAGE 2
 
