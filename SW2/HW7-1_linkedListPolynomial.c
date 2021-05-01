@@ -252,5 +252,10 @@ int main(){
     poly_mul(list1, list2, list4);
     print_poly(list4);
     
+    free(list1);
+    free(list2);
+    free(list3);
+    free(list4);
+    
     return 0;
 }
