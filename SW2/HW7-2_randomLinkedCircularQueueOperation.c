@@ -34,36 +34,37 @@ void enqueue(ListType* list, int data){
     
     Node* new = (Node*)malloc(sizeof(Node));
     if (new == NULL) error("메모리 할당 에러");
+    
     new->data = data;
     new->link = NULL;
     
-    if (list->rear == NULL){
+    if (list->rear == NULL){ // 첫번째 노드 생성
         list->front = list->rear = new;
-    }else{
-        list->rear->link = new;
-        list->rear = new;
+    }else{                   // 맨 뒤에 노드 추가
+        list->rear->link = new; // 마지막 노드가 새로운 노드를 가리키도록 함
+        list->rear = new; // rear가 새로운 노드를 가리키도록 함
     }
     list->size++;
     
 }
 
 void dequeue(ListType* list){
-    if (list->front != NULL){
-        Node* removed = list->front;
-        list->front = removed->link;
-        if(list->front == NULL) list->rear = NULL;
+    if (list->front != NULL){ //삭제할 게 있으면
+        Node* removed = list->front; // 맨 앞 노드 임시저장
+        list->front = removed->link; // front가 맨 앞 노드가 가리키는 곳(2번째 노드)를 가리키도록 함
+        if(list->front == NULL) list->rear = NULL; // 노드가 모두 삭제된 경우 rear 조정
         free(removed);
         list->size--;
         
-    }else pass++;
+    }else pass++; //삭제할 게 없으면
 }
 
 void print_queue(ListType* list){
     
-    if (list->size != 0){
+    if (list->size != 0){ // 데이터가 남아 있는 경우
         Node* p = list->front;
         
-        for(int i=0; i < list->size -1; i++){
+        for(int i=0; i < list->size -1; i++){ // 하나씩 순회하며 출력
             printf("%d -> ", p->data);
             p = p->link;
         }
@@ -80,7 +81,7 @@ void print_log(ListType* list){
     printf("----- log -----\n");
     
     for(int i=0; i < list->size; i++){
-        if (p->data == -2)
+        if (p->data == -2) 
             printf("%d : dequeue\n", i+1);
         else
             printf("%d : enqueue(%d)\n", i+1, p->data);
@@ -100,7 +101,6 @@ int main(){
     queue = create();
     log = create();
     
-    
     int mode = 0, random = 0;
     srand(time(NULL));
     
@@ -112,7 +112,7 @@ int main(){
             enqueue(queue, random);
             enqueue(log, random);
             eq++;
-        }else{
+        }else{ //mode == -2
             dequeue(queue);
             enqueue(log, mode);
             dq++;
