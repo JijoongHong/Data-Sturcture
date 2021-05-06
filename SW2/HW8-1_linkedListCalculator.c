@@ -14,7 +14,6 @@ typedef struct StackNode{
 
 typedef struct Stack{
     StackNode* top;
-    int size;
 }Stack;
 
 void init_stack(Stack *s){
@@ -22,23 +21,17 @@ void init_stack(Stack *s){
 }
 
 int is_empty(Stack *s){
-    
     return (s->top == NULL);
-    
 }
 
 void push(Stack *s, element item){
-    
     StackNode* temp = (StackNode*)malloc(sizeof(StackNode));
     temp->data = item;
     temp->link = s->top;
     s->top = temp;
-    s->size++;
-    
 }
 
 element pop(Stack *s){
-    
     if (is_empty(s)){
         fprintf(stderr, "스택공백에러\n");
         exit(1);
@@ -47,21 +40,17 @@ element pop(Stack *s){
         element data = temp->data;
         s->top = s->top->link;
         free(temp);
-        s->size--;
         return data;
     }
-    
 }
 
 element peek(Stack *s){
-    
     if (is_empty(s)){
         fprintf(stderr, "스택공백에러\n");
         exit(1);
     }else{
         return s->top->data;
     }
-    
 }
 
 void cal_postfix(char* math_exp, int len){
@@ -105,12 +94,9 @@ void cal_postfix(char* math_exp, int len){
                 case '-':
                     push(&s, term2 - term1);
                     break;
-
             }
-                
         }
     }
-    
     printf("= %d\n", pop(&s));
 }
 
@@ -118,20 +104,14 @@ void cal_postfix(char* math_exp, int len){
 int get_priority(char ch){
     
     switch (ch) {
-        case '[': case ']':
+        case '[': case ']': case '{': case '}': case '(': case ')':
             return 0;
         
-        case '{': case '}':
+        case '*': case '/':
             return 1;
             
-        case '(': case ')':
-            return 2;
-            
-        case '*': case '/':
-            return 3;
-            
         case '+': case '-':
-            return 4;
+            return 2;
     }
     
     return -1;
@@ -144,16 +124,20 @@ void postfix(char* math_exp, int len){
     char* post_exp = (char*)malloc(sizeof(char)*len*2);
     int priority, i, j=0, prev, post, brace_count=0, tens_count=0;
     char ch;
-
+    
+    //[3*(14+6)]
+    //3 14,6+*
     //[3*{6+10/(2+3)}]
-    //{3*[6+10/(2+3)]}
     //36 10,23+/+*
     
     for (i = 0; i < len; i++){
         priority = get_priority(math_exp[i]);
-        if (priority == 0 || priority == 1 || priority == 2) brace_count++;
+        
+        if (priority == 0) brace_count++;
+        
         post = get_priority(math_exp[i+1]);
         prev = get_priority(math_exp[i-1]);
+        
         if (priority == -1){ // 숫자인 경우
             
             if(post == -1 && math_exp[i+1] != '\0'){ //2자리수 이상일 때 앞자리
@@ -177,39 +161,32 @@ void postfix(char* math_exp, int len){
             }
             
         }else{ // 연산자인 경우
-            if (is_empty(&s) || priority == 0 || priority == 1 || priority == 2) { //비었거나 괄호-> 우선순위해놓고 의미가 없지않나?
+            if (is_empty(&s) || priority == 0) { //스택이 비었거나 괄호이면 바로 저장
                 push(&s, math_exp[i]);
             }
             else{
-                if (get_priority(peek(&s)) < priority && get_priority(peek(&s)) != 0 && get_priority(peek(&s)) != 1
-                    && get_priority(peek(&s)) != 2){ //우선순위 낮으면 연산자 옮기기
-                    while (get_priority(peek(&s)) < priority && get_priority(peek(&s)) != 0 && get_priority(peek(&s)) != 1
-                    && get_priority(peek(&s)) != 2){
+                if (get_priority(peek(&s)) < priority && get_priority(peek(&s)) != 0){ //괄호가 아니고, 우선순위 낮으면 연산자 옮기기
+                    while (get_priority(peek(&s)) < priority){
                         post_exp[j] = pop(&s);
                         j++;
                     }
                     push(&s, math_exp[i]);
                     
-                }else if(get_priority(peek(&s)) < priority && (peek(&s) == ')' || peek(&s) == '}'|| peek(&s) == ']')){
+                }else if(get_priority(peek(&s)) < priority && (peek(&s) == ')' || peek(&s) == '}'|| peek(&s) == ']')){ //괄호인 경우 괄호 안 연산자 옮기기
                     while (peek(&s) != '(' || peek(&s) != '{' || peek(&s) != '['){ //괄호 속 연산자 옮기기
-                        ch = pop(&s);
-                        if ((ch != '(' && ch != ')') || (ch != '{' && ch != '}') || (ch != '[' && ch != ']')){
-                            post_exp[j] = ch;
-                            j++;
-                        }
+                        post_exp[j] = pop(&s);
+                        j++;
                     }
                     push(&s, math_exp[i]);
                     
                 }else{
-                    push(&s, math_exp[i]); //우선순위 높을 때
+                    push(&s, math_exp[i]); //우선순위 높을 때 연산자 바로 저장
                 }
-                
             }
-            
         }
     }
             
-    while(!is_empty(&s)){
+    while(!is_empty(&s)){ //남은 항목 저장
         ch = pop(&s);
         if ((ch != '(' && ch != ')') && (ch != '{' && ch != '}') && (ch != '[' && ch != ']')){
             post_exp[j] = ch;
@@ -247,10 +224,13 @@ int check_exp(char* math_exp, int len){
         }
     }
     
+    //{3*[6+10/(2+3)]}
+    //(33*[4+65])
+    //[13*{42+6)]
     
     int flag[3] = {-1};
     int j = 0;
-    
+       
     for (int i = 0; i<len; i++){
         ch = math_exp[i];
         
@@ -277,7 +257,8 @@ int check_exp(char* math_exp, int len){
                     
                 }else {
                     front = pop(&s);
-                    if ((front == '(' && ch != ')') || flag[--j] != 2 || flag[j-1] > flag[j])
+                    j--;
+                    if ((front != '(') || flag[j-1] > flag[j]) //(1) 괄호 안닫힘 (2) 괄호 우선순위 안맞음
                          index = -2;
                     break;
                 }
@@ -289,7 +270,8 @@ int check_exp(char* math_exp, int len){
                     
                 }else {
                     front = pop(&s);
-                    if ((front == '{' && ch != '}') || flag[--j] != 1 || flag[j-1] > flag[j])
+                    j--;
+                    if ((front != '{') || flag[j-1] > flag[j])
                          index = -2;
                     break;
                 }
@@ -301,7 +283,8 @@ int check_exp(char* math_exp, int len){
                     
                 }else {
                     front = pop(&s);
-                    if ((front == '[' && ch != ']') || flag[--j] != 0 || flag[j-1] > flag[j])
+                    j--;
+                    if ((front != '[') || flag[j-1] > flag[j])
                          index = -2;
                     break;
                 }
