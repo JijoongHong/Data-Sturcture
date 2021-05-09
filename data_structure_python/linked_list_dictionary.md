@@ -1,3 +1,5 @@
+# 5만개의 데이터를 저장하고, 검색 및 추가할 수 있는 사전
+
 ![image](https://user-images.githubusercontent.com/63644587/117575010-e984e980-b11a-11eb-8c60-3358395b09c9.png)
 
 
@@ -36,6 +38,9 @@
 - 연결리스트(Dictionary class)
   - 연결리스트는 단방향으로 구성된 연결리스트를 활용하며 맨 앞 노드를 가리키는 head와 맨 뒤 노드를 가리키는 tail를 운용함과 동시에 노드의 갯수를 의미하는 size 변수를 운용한다.
   - 해당 클래스의 method에 대한 ADT는 다음과 같다.
+ 
+    <img width="554" alt="스크린샷 2021-05-09 오후 11 11 18" src="https://user-images.githubusercontent.com/63644587/117575219-dde5f280-b11b-11eb-836a-51680a6ebc30.png">
+
 
 
 ## **2) 사전 생성**
