@@ -23,3 +23,5 @@
 
 
 ## 연결리스트
+### [5만개 단어 사전 만들기 및 성능개선](./data_structure_python/linked_list_dictionary.md)
+### [하나의 연결리스트로 1만 명 데이터 필드별 정렬](./data_structure_python/double_linked_list.md)
