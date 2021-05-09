@@ -18,7 +18,7 @@ class Student:
         self.size = 0
 
 
-    def getNodeId(self, pos):
+    def get_node_id(self, pos):
         if pos < 0:
             return None
 
@@ -31,7 +31,7 @@ class Student:
         return node
 
 
-    def getNodeName(self, pos):
+    def get_node_name(self, pos):
         if pos < 0:
             return None
 
@@ -45,7 +45,7 @@ class Student:
 
 
     def insert_id(self, pos, student_id, name, phone):
-        before = self.getNodeId(pos - 1)  # 이전 노드의 위치 확인
+        before = self.get_node_id(pos - 1)  # 이전 노드의 위치 확인
         if before is None:
             node = Node(student_id, name, phone, self.head_id)  # 맨앞에 추가, 새로 추가한 노드가 현재 맨 앞 노드의 위치를 가리키도록 하는 한편
             self.head_id = node
@@ -62,7 +62,7 @@ class Student:
 
 
     def insert_name(self, pos, Node):
-        before = self.getNodeName(pos - 1)  # 이전 노드의 위치 확인
+        before = self.get_node_name(pos - 1)  # 이전 노드의 위치 확인
 
         if before is None:
             Node.next_name = self.head_name
@@ -74,11 +74,10 @@ class Student:
             before.next_name = Node  # 이전 노드의위치를 새로 추가한 노드를 가리키도록 한다
 
 
-    def whereToInsertId(self, id):
+    def where_to_insert_id(self, id):
         node = self.head_id
         pos = 0
-        # print(node)
-        # print(self.size)
+
         while node is not None:
 
             if id < node.id:  # 중간에 끼워놓을 곳 찾았을 때
@@ -89,7 +88,7 @@ class Student:
 
         return pos  # 맨 마지막에 추가해야할 때 마지막 노드 위치 반환
 
-    def whereToInsertName(self, name):
+    def where_to_insert_name(self, name):
         node = self.head_name
         pos = 0
 
@@ -138,12 +137,13 @@ def generate_data(student_data):
             print("100%")
 
         student_id = str(id)  # 학번 지정
-        name = "".join([random.choice(string.ascii_lowercase) for _ in range(10)])  # 이름지정
+        len_name = random.randint(1,10)
+        name = "".join([random.choice(string.ascii_lowercase) for _ in range(len_name)])  # 이름지정
         phone_number = "010" + "".join([str(random.randint(0, 9)) for _ in range(8)])  # 번호지정
 
-        pos = student_data.whereToInsertId(student_id)  # 학번 기준으로 삽입할 곳 탐색
+        pos = student_data.where_to_insert_id(student_id)  # 학번 기준으로 삽입할 곳 탐색
         new_node = student_data.insert_id(pos, student_id, name, phone_number)  # 삽입 후 추가한 노드 정보 저장
-        pos = student_data.whereToInsertName(name)  # 이름 기준으로 삽입할 곳 탐색
+        pos = student_data.where_to_insert_name(name)  # 이름 기준으로 삽입할 곳 탐색
         student_data.insert_name(pos, new_node)  # 이미 생성된 노드를 이름순으로 정렬되도 삽입
 
     print("# ------------Dataset is created and sorted------------ #")
@@ -166,7 +166,7 @@ def main():
         elif mode == "0":
             break  # 종료
         else:
-            print("잘못된 입력입니다. 다시 입력하세요")  # 입력이 잘못된 경우 다시 실
+            print("잘못된 입력입니다. 다시 입력하세요")  # 입력이 잘못된 경우 다시 실행
 
 
 if __name__ == "__main__":
