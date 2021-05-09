@@ -58,7 +58,7 @@
 </details>
 
 
-### [최단거리 미로계산](./stack&queue/FastestMaze.md)
+### [최단거리 미로계산 및 시각화](./stack&queue/FastestMaze.md)
 
 <details>
 <summary>실행 예시</summary>
