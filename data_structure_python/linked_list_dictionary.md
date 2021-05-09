@@ -1,10 +1,8 @@
 # 5만개의 데이터를 저장하고, 검색 및 추가할 수 있는 사전
 
-![image](https://user-images.githubusercontent.com/63644587/117575010-e984e980-b11a-11eb-8c60-3358395b09c9.png)
+<img width="594" alt="스크린샷 2021-05-09 오후 11 14 18" src="https://user-images.githubusercontent.com/63644587/117575327-48972e00-b11c-11eb-81d8-7b90de6a2ac8.png">
 
-
-![image](https://user-images.githubusercontent.com/63644587/117575019-f0abf780-b11a-11eb-8076-57044ed49e14.png)
-
+<img width="945" alt="스크린샷 2021-05-09 오후 11 14 36" src="https://user-images.githubusercontent.com/63644587/117575343-5351c300-b11c-11eb-9f62-de437534b4d5.png">
 
 
 ## **목 차**
@@ -48,7 +46,9 @@
 - 분할된 리스트 생성
   - 사전 초기화 및 탐색의 효율성을 증대하기 위하여 개별 알파벳 별 연결리스트를 선언한다.
   - a~z 까지 총 26개의 Dictionary 클래스를 선언하고, 이에 대한 참조변수들을 index라는 리스트에 넣어 운용한다.
+  <img width="594" alt="스크린샷 2021-05-09 오후 11 14 01" src="https://user-images.githubusercontent.com/63644587/117575321-3fa65c80-b11c-11eb-8d17-d17bc7c5eea3.png">
 
+    | - | - | - | - | - | - | - |
     |a 사전|b 사전|c 사전|d 사전|e 사전|…|z 사전|
     |0|1|2|3|4|…|25|
 
