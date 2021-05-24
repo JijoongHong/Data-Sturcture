@@ -137,29 +137,27 @@ void add_node(TreeNode* root){
 
 int equal(TreeNode* first, TreeNode* second){
     
-    return (((!first && !second) || (first&&second&&(first->data == second->data)))
+    return (((!first && !second) || (first&&second&&(first->data == second->data))) // 두 트리가 없거나, 데이터가 동일하고, 양 옆 역시 같은지 여부
             && equal(first->left, second->left) && equal(first->right, second->right));
 }
 
 
-int equal_iter(TreeNode* first, TreeNode* second){
+int equal_iter(TreeNode* first, TreeNode* second){ //스택 두개쓰면 안되나봄,,,,,,,,,
     
     Stack f;
     init_stack(&f);
-    push(&f, first); // 루트 노드 삽입
+    push(&f, first); // first 루트 노드 삽입
     
     Stack s;
     init_stack(&s);
     push(&s, second); // 루트 노드 삽입
     
     while(!is_empty(&f) && !is_empty(&s)){
-        first = pop(&f); // 루트 노드 꺼내어
-        second = pop(&s);
-        
-        //printf("%d, %d\n", first->data, second->data);
+        first = pop(&f); // first 노드 꺼내어
+        second = pop(&s);// second 노드 꺼냄
         
         if (first->data != second->data)
-            return 0;
+            return 0; // 다르면 0 반환
         
         if(first->right != NULL)
             push(&f, first->right); // 오른쪽 노드가 있으면 삽입(pop시 left가 먼저 나오도록 right 먼저 삽입)
@@ -167,19 +165,17 @@ int equal_iter(TreeNode* first, TreeNode* second){
         if(second->right != NULL)
             push(&s, second->right); // 오른쪽 노드가 있으면 삽입(pop시 left가 먼저 나오도록 right 먼저 삽입)
         
-        
         if(first->left != NULL)
             push(&f, first->left); // 왼쪽 노드가 있으면 삽입
         
         if(second->left != NULL)
             push(&s, second->left); // 왼쪽 노드가 있으면 삽입
-        
     }
     
     if (!is_empty(&f) || !is_empty(&s))
-        return 0;
+        return 0; // 둘 중 하나라도 비지 않았으면 트리가 다르다는 의미이므로 0 반환
     
-    return 1;
+    return 1; // 동일할 경우
 }
 
 int main(){

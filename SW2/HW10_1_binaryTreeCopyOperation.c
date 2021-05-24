@@ -141,41 +141,34 @@ TreeNode* copy_iter(TreeNode* orig){
     init_stack(&s);
     push(&s, orig); // 루트 노드 삽입
     
-    Stack new;
+    Stack new; // 결과 스택
     init_stack(&new);
-    push(&new, temp);
-
+    push(&new, temp); // 복사 루트 노드 삽입
 
     while(!is_empty(&new)){
-        temp_root = pop(&s);
+        temp_root = pop(&s); // 원본 및 복사 노드 pop
         temp = pop(&new);
 
-        if (temp_root->right != NULL){
-            temp->right = new_node(temp_root->right->data);
-            push(&s, temp_root->right);
+        if (temp_root->right != NULL){ // 원본에 오른쪽이 있으면
+            temp->right = new_node(temp_root->right->data); // 복사본의 오른쪽에 복사
+            push(&s, temp_root->right); // 원본 및 복사본 스택에 삽입
             push(&new, temp->right);
         }
 
-        if(temp_root->left != NULL){
-            temp->left = new_node(temp_root->left->data);
-            push(&s, temp_root->left);
+        if(temp_root->left != NULL){ // 원본에 왼쪽이 있으면
+            temp->left = new_node(temp_root->left->data); // 복사본의 왼쪽에 복사
+            push(&s, temp_root->left); // 원본 및 복사본 스택에 삽입
             push(&new, temp->left);
         }
     }
-    return new_root;
+    return new_root; // 복사본 루트 노드 주소 반환
 }
 
 int main(){
     
     srand((int)time(NULL));
-    TreeNode* root = (TreeNode*)malloc(sizeof(TreeNode));
-    root->data = rand()%2 + 10;
-    root->left = root->right = NULL;
-
-    TreeNode* root_iter = (TreeNode*)malloc(sizeof(TreeNode));
-    root_iter->data = rand()%2 + 10;
-    root_iter->left = root_iter->right = NULL;
-    
+    TreeNode* root = new_node(rand()%2 + 10);
+    TreeNode* root_iter = new_node(rand()%2 + 10);
     
     for(int i = 0; i < SIZE - 1 ; i++){
         add_node(root);
