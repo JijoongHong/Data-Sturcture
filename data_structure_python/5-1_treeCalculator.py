@@ -1,5 +1,6 @@
 MAX_SIZE = 100
 
+
 class Queue:
     def __init__(self):
         self.front = 0
@@ -7,17 +8,17 @@ class Queue:
         self.items = [None] * MAX_SIZE
         self.flag = False
 
-    def isEmpty(self):
-        return self.flag == False and self.front == self.rear
+    def is_empty(self):
+        return self.flag is False and self.front == self.rear
 
-    def isFull(self):
-        return self.flag == True and self.front == (self.rear + 1) % MAX_SIZE
+    def is_full(self):
+        return self.flag is True and self.front == (self.rear + 1) % MAX_SIZE
 
     def clear(self):
         self.front = self.rear
 
     def enqueue(self, item):
-        if not self.isFull():
+        if not self.is_full():
             self.items[self.rear] = item
             self.rear = (self.rear + 1) % MAX_SIZE
             self.flag = True
@@ -25,7 +26,7 @@ class Queue:
             print("큐가 찼음")
 
     def dequeue(self):
-        if not self.isEmpty():
+        if not self.is_empty():
             temp = self.items[self.front]
             self.front = (self.front + 1) % MAX_SIZE
             self.flag = False
@@ -34,7 +35,7 @@ class Queue:
             print("큐가 비었음")
 
     def peek(self):
-        if not self.isEmpty():
+        if not self.is_empty():
             return self.items[(self.front + 1) % MAX_SIZE]
 
 
@@ -61,28 +62,28 @@ class Tree:
                 stack.append(temp)
         self.root = stack.pop()
 
-    def preorder(self, node):
-        if node is not None:
-            print(node.item, end="")
-            self.preorder(node.left)
-            self.preorder(node.right)
+    def preorder(self, root):
+        if root is not None:
+            print(root.item, end="")
+            self.preorder(root.left)
+            self.preorder(root.right)
 
-    def inorder(self, node):
-        if node is not None:
-            self.inorder(node.left)
-            print(node.item, end="")
-            self.inorder(node.right)
+    def inorder(self, root):
+        if root is not None:
+            self.inorder(root.left)
+            print(root.item, end="")
+            self.inorder(root.right)
 
-    def postorder(self,node):
-        if node is not None:
-            self.postorder(node.left)
-            self.postorder(node.right)
-            print(node.item, end="")
+    def postorder(self, root):
+        if root is not None:
+            self.postorder(root.left)
+            self.postorder(root.right)
+            print(root.item, end="")
 
     def level(self, root):
         q = Queue()
         q.enqueue(root)
-        while not q.isEmpty():
+        while not q.is_empty():
             n = q.dequeue()
             if n is not None:
                 print(n.item, end="")
@@ -107,13 +108,17 @@ class Tree:
             elif root.item == '/':
                 return op1 / op2
 
+
 def get_priority(ch):
-    if ch == '*' or '/':
+    if ch == '*' or ch == '/':
         return 0
-    elif ch == '+' or '-':
+    elif ch == '+' or ch == '-':
         return 1
     else:
         return 2
+
+
+# 8/4-5+2*3-1*5
 
 
 def postfix(exp):
@@ -123,16 +128,15 @@ def postfix(exp):
         if exp[i].isdigit() is True:
             result.append(exp[i])
         else:
-            if len(stack) != 0 and get_priority(stack[-1]) < get_priority(exp[i]):
-                while get_priority(stack[-1]) < get_priority(exp[i]):
-                    result.append(stack.pop())
-            else:
-                stack.append(exp[i])
+            while len(stack) != 0 and (get_priority(stack[-1]) <= get_priority(exp[i])):
+                result.append(stack.pop())
+            stack.append(exp[i])
 
     while len(stack) != 0:
         result.append(stack.pop())
-
     return result
+
+
 '''
 def postfix(exp):
     stack = []
@@ -163,9 +167,9 @@ def main():
     tree = Tree()
     tree.init_tree(exp)
 
-    print("전위순회 : ", end = "")
+    print("전위순회 : ", end="")
     tree.preorder(tree.root)
-    print("\n중위순회 : ", end = "")
+    print("\n중위순회 : ", end="")
     tree.inorder(tree.root)
     print("\n후위순회 : ", end="")
     tree.postorder(tree.root)
@@ -178,4 +182,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

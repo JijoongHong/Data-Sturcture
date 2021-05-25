@@ -8,15 +8,15 @@ class Node:
         self.right = None
 
 
-class BinaryTree:
+class BinarySearchTree:
     def __init__(self):
-        self.head = None
+        self.root = None
 
     def search(self, word, level):
-        if self.head.word is None:
+        if self.root is None:
             return None, 0
         else:
-            return self.__search_node(self.head, word, level)
+            return self.__search_node(self.root, word, level)
 
     def __search_node(self, cur, word, level):
         if cur is None:
@@ -30,14 +30,14 @@ class BinaryTree:
             else:
                 level += 1
                 return self.__search_node(cur.right, word, level)
-        return None
+        return None,0
 
     def insert(self, word, meaning):
-        if self.head is None:
-            self.head = Node(word, meaning)
+        if self.root is None:
+            self.root = Node(word, meaning)
 
         else:
-            self.__insert_node(self.head, word, meaning)
+            self.__insert_node(self.root, word, meaning)
 
     def __insert_node(self, cur, word, meaning):
         if cur.word >= word:
@@ -85,7 +85,7 @@ class BinaryTree:
         node.left = self.rotateRR(new)
         return self.rotateLL(node)
 
-    def cal_height_diff(self, node):
+    def get_balance_factor(self, node):
         if node is None:
             return 0
         else:
@@ -93,15 +93,15 @@ class BinaryTree:
 
     def rebalance(self, node):
 
-        height_diff = self.cal_height_diff(node)
+        balance_factor = self.get_balance_factor(node)
 
-        if height_diff > 1:
-            if self.cal_height_diff(node.left) > 0:
+        if balance_factor > 1:
+            if self.get_balance_factor(node.left) > 0:
                 node = self.rotateLL(node)
             else:
                 node = self.rotateLR(node)
-        elif height_diff < -1:
-            if self.cal_height_diff(node.right) < 0:
+        elif balance_factor < -1:
+            if self.get_balance_factor(node.right) < 0:
                 node = self.rotateRR(node)
             else:
                 node = self.rotateRL(node)
@@ -109,12 +109,12 @@ class BinaryTree:
         return node
 
     def insert_avl(self, word, meaning):
-        if self.head is None:
-            self.head = Node(word, meaning)
+        if self.root is None:
+            self.root = Node(word, meaning)
         else:
-            self.head = self.__insert_node_avl(self.head, word, meaning)
+            self.root = self.__insert_node_avl(self.root, word, meaning)
 
-        return self.head
+        return self.root
 
     def __insert_node_avl(self, cur, word, meaning):
         if cur.word >= word:
@@ -136,8 +136,8 @@ class BinaryTree:
 
 def main():
 
-    a = BinaryTree()
-    data = open("./r.TXT")
+    a = BinarySearchTree()
+    data = open("./randdict_utf8.TXT")
     print("사전 파일을 읽는 중입니다.")
     s1 = time.time()
     while True:
@@ -147,14 +147,14 @@ def main():
         word, meaning = line.split(" : ") # 단어와 뜻 분리
         a.insert(word, meaning)
     s2 = time.time()
-    count = a.count_node(a.head)
+    count = a.count_node(a.root)
 
     print("사전 파일을 모두 읽었습니다. {0}개의 단어가 있습니다. 소요시간: {1}".format(count, s2-s1))
-    print("A트리의 전체 높이는 {0}입니다.".format(a.cal_height(a.head)))
+    print("A트리의 전체 높이는 {0}입니다.".format(a.cal_height(a.root)))
 
     data = open("./randdict_utf8.TXT")
     lines = data.readlines()
-    random_words = [lines[random.randint(0, count-1)].split(" : ")[0] for i in range(10)]
+    random_words = [lines[random.randint(0, count-1)].split(" : ")[0] for _ in range(10)]
 
     print("\n랜덤하게 선택된 단어 10개 : ", random_words)
     s1 = time.time()
@@ -165,8 +165,8 @@ def main():
     print("10개 단어 탐색 소요 시간 :", s2-s1)
 
 
-    b = BinaryTree()
-    data = open("./r.TXT")
+    b = BinarySearchTree()
+    data = open("./randdict_utf8.TXT")
     print("\n\n사전 파일을 읽는 중입니다.")
     s1 = time.time()
     while True:
@@ -174,12 +174,12 @@ def main():
         if not line:
             break
         word, meaning = line.split(" : ") # 단어와 뜻 분리
-        b.head = b.insert_avl(word, meaning)
+        b.root = b.insert_avl(word, meaning)
     s2 = time.time()
     data.close()
 
-    print("사전 파일을 모두 읽었습니다. {0}개의 단어가 있습니다. 소요시간: {1}".format(b.count_node(b.head), s2-s1))
-    print("B트리의 전체 높이는 {0}입니다.".format(b.cal_height(b.head)))
+    print("사전 파일을 모두 읽었습니다. {0}개의 단어가 있습니다. 소요시간: {1}".format(b.count_node(b.root), s2-s1))
+    print("B트리의 전체 높이는 {0}입니다.".format(b.cal_height(b.root)))
     print("\n랜덤하게 선택된 단어 10개 : ", random_words)
     s1 = time.time()
     for word in random_words:
