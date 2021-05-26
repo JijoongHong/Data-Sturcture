@@ -142,5 +142,31 @@
 
 
 ## 트리
-### [후위수식 계산기]
-### [대량의 데이터로 이진탐색트리, AVL트리 사전 만들기]
+### [후위수식 계산기](./data_structure_python/5-1_treeCalculator.md)
+
+<details>
+<summary>실행 예시</summary>
+<div markdown="1">
+  
+  ![image](https://user-images.githubusercontent.com/63644587/119698201-fbd98400-be8b-11eb-98d8-b7003b6e4742.png)
+
+  ![image](https://user-images.githubusercontent.com/63644587/119698220-0005a180-be8c-11eb-80e7-a5a0f8fdc398.png)
+
+
+</div>
+</details>
+
+
+### [대량의 데이터로 이진탐색트리, AVL트리 사전 만들기](./data_structure_python/5-2_binarySearchTreeDictionary.md)
+
+<details>
+<summary>실행 예시</summary>
+<div markdown="1">
+  
+  ![image](https://user-images.githubusercontent.com/63644587/119698278-0c89fa00-be8c-11eb-81a0-8fdad61b52f0.png)
+
+  ![image](https://user-images.githubusercontent.com/63644587/119698296-127fdb00-be8c-11eb-81a8-0c9982985070.png)
+
+
+</div>
+</details>
