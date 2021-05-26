@@ -438,7 +438,7 @@
 
 ## **4) B트리 출력 결과 및 비교**
     
-    ![image](https://user-images.githubusercontent.com/63644587/119697431-24ad4980-be8b-11eb-94a6-c7f4d2cb0da8.png)
+![image](https://user-images.githubusercontent.com/63644587/119697431-24ad4980-be8b-11eb-94a6-c7f4d2cb0da8.png)
 
 
 -   사전 파일을 읽기 전, 후의 시간을 측정하여 소요시간을 측정하였다.
