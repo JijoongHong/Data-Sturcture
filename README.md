@@ -174,3 +174,16 @@
 
 ## 그래프
 ### 지하철 최단거리
+
+<details>
+<summary>실행 예시</summary>
+<div markdown="1">
+  
+  ![image](https://user-images.githubusercontent.com/63644587/119698278-0c89fa00-be8c-11eb-81a0-8fdad61b52f0.png)
+
+  ![image](https://user-images.githubusercontent.com/63644587/119698296-127fdb00-be8c-11eb-81a8-0c9982985070.png)
+
+
+</div>
+</details>
+
